@@ -21,12 +21,12 @@ class HomepageTest extends TestCase
     {
         //Arrange
         $user = factory(User::class)->create();
-        $assessment = factory(Assessment::class)->create();
-        $user->assessments()->attach($assessment->id);
-        $assessments = 
+//        $assessment = factory(Assessment::class)->create();
+//        $user->assessments()->attach($assessment->id);
+//        $assessments =
 
         //Action
-        $response = $this->actingAs($user)->get("/dashboard");
+        $response = $this->actingAs($user)->get("/assessment/create");
 
 
         //Assertion

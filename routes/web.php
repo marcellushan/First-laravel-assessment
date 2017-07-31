@@ -11,4 +11,10 @@
 |
 */
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/', function () {
+    return view('home', ['goal' => 'bunch of crap', 'label' => 'College Goals']);
+});
+
+//Route::get('/assessment', 'AssessmentController@index');
+
+Route::resource('assessment', 'AssessmentController');
