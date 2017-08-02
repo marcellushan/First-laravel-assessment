@@ -17,7 +17,6 @@ class AssessmentController extends IAbstractController
     {
        $user = \App\User::find(1);
 
-//        dd($URL);
         $team_id = 493;
         $team = \App\Team::find(493);
         $goals = \App\Goal::where('inactive')->get();
