@@ -18,3 +18,4 @@ Route::get('/', function () {
 //Route::get('/assessment', 'AssessmentController@index');
 
 Route::resource('assessment', 'AssessmentController');
+Route::resource('team', 'TeamController');

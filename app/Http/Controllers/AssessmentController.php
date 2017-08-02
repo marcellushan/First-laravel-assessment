@@ -9,30 +9,10 @@ use URL;
 
 
 
-class AssessmentController extends Controller
+class AssessmentController extends IAbstractController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-//        $data = $request->all();
-        $data = array('period' => '2017');
-//        $data period = '2017';
-//        $data->slo_id = 22;
-//        $user = factory(User::class)->create();
-        $assessment = new Assessment($data);
-        $assessment->save();
-        dd($assessment);
-    }
+    protected $category = 'assessment';
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
        $user = \App\User::find(1);
@@ -40,32 +20,9 @@ class AssessmentController extends Controller
 //        dd($URL);
         $team_id = 493;
         $team = \App\Team::find(493);
-        $goal_list = new \App\Goal();
-        $goals = $goal_list->where('inactive')->get();
-        $slo_list = new \App\Slo();
-        $slos = $slo_list
-                        ->where('team_id', '=', $team_id)
-                        ->get();
-//        dd($slos);
-
+        $goals = \App\Goal::where('inactive')->get();
+        $slos = \App\Slo::where('team_id', '=', $team_id)->get();
         return view('assessment.create')->with(compact('user','team','goals','slos'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data = $request->all();
-//        dd($data);
-//        $user = factory(User::class)->create();
-//        dd($user);
-//        $model_name = $this::MODEL_NAME;
-        $assessment = new Assessment($data);
-        $assessment->save();
     }
 
     /**
@@ -76,30 +33,29 @@ class AssessmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = new $this->model_name();
+        $record = $model::find($id);
+        $team = $record->team;
+        $user = $record->user;
+        $goal = $record->goal;
+        $slo = $record->slo;
+        return view($this->category . '.show')->with(compact('record','team','user','goal','slo'));
+        dd($user);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $team_id = 493;
+        $goals = \App\Goal::where('inactive')->get();
+        $slos = \App\Slo::where('team_id', '=', $team_id)->get();
+        $model = new $this->model_name();
+        $record = $model::find($id);
+        $team = $record->team;
+        $user = $record->user;
+        $goal = $record->goal;
+        $slo = $record->slo;
+        return view($this->category . '.edit')->with(compact('record','team','user','goal','slo','goals','slos'));
     }
 
     /**

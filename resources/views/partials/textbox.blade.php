@@ -2,7 +2,7 @@
     <div class="col-sm-10">
         <div class="form-group">
             <h2>{{$label}}</h2>
-            <textarea class="form-control" rows="5" name="{{$name}}"></textarea>
+            <textarea class="form-control" rows="5" name="{{$name}}">{{@$$assessment->$field}}</textarea>
         </div>
     </div>
 </div>
