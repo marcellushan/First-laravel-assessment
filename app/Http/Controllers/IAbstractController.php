@@ -36,7 +36,9 @@ class IAbstractController extends Controller
     {
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
+        $records = $model->get();
 
+        return view($this->category . '.index')->with(compact('records'));
         dd($model->get());
     }
 

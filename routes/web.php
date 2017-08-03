@@ -12,10 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('home', ['goal' => 'bunch of crap', 'label' => 'College Goals']);
+    return view('welcome', ['goal' => 'bunch of crap', 'label' => 'College Goals']);
 });
 
 //Route::get('/assessment', 'AssessmentController@index');
 
 Route::resource('assessment', 'AssessmentController');
 Route::resource('team', 'TeamController');
+Route::resource('slo', 'SloController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

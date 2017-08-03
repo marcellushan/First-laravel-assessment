@@ -4,30 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TeamController extends IAbstractController
+class SloController extends IAbstractController
 {
-    protected $category = 'team';
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-//    public function show($id)
-//    {
-//        //
-//    }
+
+    protected $category = 'slo';
 
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-//    public function edit($id)
-//    {
-//        //
-//    }
+    public function store(Request $request)
+    {
+        //
+    }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -36,10 +30,10 @@ class TeamController extends IAbstractController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//    }
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.

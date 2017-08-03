@@ -4,7 +4,8 @@
     <div class="title_header">Unit Leader: {{$user->name}}</div>
     </div>
     <div class="well">
-    @include('partials.form_open', ['name' => 'assessment'])
+    {{--@include('partials.form_open', ['name' => 'assessment'])--}}
+    {{Form::open(['url' => 'assessment'])}}
     {{Form::hidden('user_id', $user->id)}}
     {{Form::hidden('period', '2017')}}
     {{Form::hidden('team_id', $team->id)}}
