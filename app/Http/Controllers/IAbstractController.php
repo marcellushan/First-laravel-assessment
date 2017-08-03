@@ -6,20 +6,32 @@ use Illuminate\Http\Request;
 
 class IAbstractController extends Controller
 {
+
+
+    /**
+     * @var $category
+     *
+     * The abstract name of the model to be used
+     */
     protected $category;
 
     /**
-     * Display a listing of the resource.
+     * IAbstractController constructor.
      *
-     * @return \Illuminate\Http\Response
+     * Uses the category variable to build the Model object
      */
+
 
     public function __construct() {
 
         $this->model_name = 'App\\' . ucfirst($this->category);
 
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
 //        $model_name = 'App\\' . ucfirst($this->category);
@@ -68,7 +80,7 @@ class IAbstractController extends Controller
 
     }
 
-    /**
+    /** `
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -106,6 +118,7 @@ class IAbstractController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = $this->model_name;
+        $record = $model::destroy($id);
     }
 }

@@ -15,10 +15,11 @@ class AssessmentController extends IAbstractController
 
     public function create()
     {
-       $user = \App\User::find(1);
+        $user = \App\User::find(1);
 
-        $team_id = 493;
-        $team = \App\Team::find(493);
+//        dd($URL);
+        $team_id = 1;
+        $team = \App\Team::find(1);
         $goals = \App\Goal::where('inactive')->get();
         $slos = \App\Slo::where('team_id', '=', $team_id)->get();
         return view('assessment.create')->with(compact('user','team','goals','slos'));
