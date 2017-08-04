@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SloTableSeeder extends Seeder
+class TeamTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,12 @@ class SloTableSeeder extends Seeder
     public function run()
     {
         for ($x = 0; $x <= 7; $x++) {
-            $id = DB::table('slos')->insertGetId([
-                'name' => 'Sed porttitor lectus nibh.',
-                'team_id' => $x + 1,
+            $id = DB::table('teams')->insertGetId([
+                'name' =>str_random(10),
+                'mission' =>'Quisque velit nisi, pretium ut lacinia in, elementum id enim.',
                 'created_at' => date("Y-m-d")
             ]);
+
         }
     }
 }
