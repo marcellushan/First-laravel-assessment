@@ -18,10 +18,12 @@ Route::get('/', function () {
 //Route::get('/assessment', 'AssessmentController@index');
 
 Route::resource('assessment', 'AssessmentController');
+Route::get('/assessment/team/{user_id}/{team_id}', 'AssessmentController@team');
 Route::resource('team', 'TeamController');
 Route::resource('slo', 'SloController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/{id}', 'DashboardController@index');
+Route::get('/dashboard/team/{user_id}/{team_id}', 'DashboardController@team');

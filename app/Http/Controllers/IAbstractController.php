@@ -63,6 +63,9 @@ class IAbstractController extends Controller
         $data = $request->all();
         $model = new $this->model_name($data);
         $model->save();
+//        $record = $model;
+        return redirect('assessment/' . $model->id);
+
     }
 
     /**

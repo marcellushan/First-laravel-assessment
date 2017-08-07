@@ -4,7 +4,7 @@
         <div class="title_header">Unit Leader: {{$record->period}}</div>
     </div>
     <div class="well">
-        {{Form::open(['url' => 'assessment/1','method' => 'PUT'])}}
+        {{Form::open(['url' => 'assessment/' . $record->id,'method' => 'PUT'])}}
         {{--@include('partials.form_open', ['name' => 'assessment/{{1}}' ,'method' => 'PUT'])--}}
         @include('partials.selected_radio_button', ['label' => 'College Goal','name' => 'goals', 'list_type' => 'goal_id','assessment' => 'record','selection' => 'goal_id'])
         @include('partials.textfield', ['label' => 'Associated Course','name' => 'course','field' => 'course','record_type' => 'record'])
