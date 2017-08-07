@@ -21,9 +21,9 @@ class AssessmentTableSeeder extends Seeder
                 ]);
                 $id =DB::table('assessments')->insertGetId([
                    'period' =>'2017',
-                    'slo_id' => rand(1,10),
+                    'slo_id' => rand(33,243),
                     'goal_id' => rand(1,7),
-                    'team_id' => rand(1,10),
+                    'team_id' => rand(201,270),
                     'course' => str_random(4) . rand(1000,9999),
                     'method' => 'Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta.',
                     'measure' => 'Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta.',

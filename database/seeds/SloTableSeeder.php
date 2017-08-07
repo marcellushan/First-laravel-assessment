@@ -15,7 +15,7 @@ class SloTableSeeder extends Seeder
             $id = DB::table('slos')->insertGetId([
                 'name' => 'Sed porttitor lectus nibh.',
                 'team_id' => $x + 1,
-                'created_at' => date("Y-m-d")
+//                'created_at' => date("Y-m-d")
             ]);
         }
     }
