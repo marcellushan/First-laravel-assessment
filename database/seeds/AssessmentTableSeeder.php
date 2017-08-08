@@ -9,13 +9,15 @@ class AssessmentTableSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
+        $faker = Faker\Factory::create();
         {
             for ($x = 0; $x <= 10; $x++) {
                 $id = DB::table('users')->insertGetId([
-                    'name' => str_random(10) . ',' . str_random(10),
-                    'email' => str_random(10) . '@highlands.edu',
+                    'name' => $faker->name,
+                    'email' => $faker->lastName . '@highlands.edu',
                     'password' => str_random(10),
                     'created_at' => date("Y-m-d")
                 ]);
@@ -24,9 +26,9 @@ class AssessmentTableSeeder extends Seeder
                     'slo_id' => rand(33,243),
                     'goal_id' => rand(1,7),
                     'team_id' => rand(201,270),
-                    'course' => str_random(4) . rand(1000,9999),
-                    'method' => 'Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta.',
-                    'measure' => 'Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta.',
+                    'course' => $faker->word . rand(1000,9999),
+                    'method' => $faker->text,
+                    'measure' => $faker->text,
                     'submit_date' => date("Y-m-d"),
                     'created_at' => date("Y-m-d"),
                     'user_id' => $id
