@@ -12,6 +12,6 @@ class Team extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->using('App\TeamUser');
+        return $this->belongsToMany('App\User');
     }
 }

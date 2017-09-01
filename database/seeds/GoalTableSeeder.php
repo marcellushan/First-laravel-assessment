@@ -11,10 +11,11 @@ class GoalTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
         for ($x = 0; $x <= 7; $x++) {
             $id = DB::table('goals')->insertGetId([
 //                   'user_id' => rand(1,999),
-                'name' =>'Quisque velit nisi, pretium ut lacinia in, elementum id enim.',
+                'name' =>$faker->sentence(),
                 'created_at' => date("Y-m-d")
             ]);
 

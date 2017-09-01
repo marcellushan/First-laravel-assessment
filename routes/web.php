@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 //Route::get('/assessment', 'AssessmentController@index');
 
-Route::resource('assessment', 'AssessmentController');
-Route::get('/assessment/team/{user_id}/{team_id}', 'AssessmentController@team');
+//Route::resource('assessment', 'AssessmentController');
+Route::get('/assessment/create/{user_id}/{team_id}', 'AssessmentController@create');
 Route::resource('team', 'TeamController');
 Route::resource('slo', 'SloController');
 

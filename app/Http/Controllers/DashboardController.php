@@ -11,36 +11,24 @@ class DashboardController extends Controller
    {
 
        $user = \App\User::find($id);
+//      $user->teams()->attach(204);
 //      $user->teams()->attach(203);
-
-       $teams = $user->teams->all();
-//       dd($teams);
+       $teams = $user->teams;
        if(count($teams) > 1 )
-       {
-          return view('dashboard.teams', compact('user','teams','assessments'));
-       }
+           {
+              return view('dashboard.teams', compact('user','teams','assessments'));
+           }
 
        if(count($teams) < 1 )
-       {
-           return view('dashboard.no_team');
-       }
-//              dd(count($teams));
+           {
+               return view('dashboard.no_team');
+           }
+
        $team_id = $user->teams->pluck('id')[0];
        $team = \App\Team::find($team_id);
-//       dd($team);
-
-       $assessments = \App\Assessment::where('team_id','=', $team)->get();
+       $assessments = \App\Assessment::where('team_id','=', $team_id)->get();
        return view('dashboard.index', compact('user','team','assessments'));
-//       foreach ($assessments as $assessment)
-//       {
-//           echo "<pre>";
-//           print_r($assessment->slo->name);
-//           echo "</pre>";
-//       }
-//       dd($assessments);
-//       dd(count($team));
-//       $user = Auth::user();
-//       return view('dashboard.index', compact('user','team','assessments'));
+
    }
 
    public function team($user_id, $team_id)

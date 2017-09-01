@@ -9,17 +9,17 @@ use URL;
 
 
 
-class AssessmentController extends IAbstractController
+class AssessmentController extends Controller
 {
     protected $category = 'assessment';
 
-    public function create()
+    public function create($user_id, $team_id)
     {
-        $user = \App\User::find(3);
+        $user = \App\User::find($user_id);
 
 //        dd($URL);
-        $team_id = 1;
-        $team = \App\Team::find(201);
+//        $team_id = 1;
+        $team = \App\Team::find($team_id);
         $goals = \App\Goal::where('inactive')->get();
         $slos = \App\Slo::where('team_id', '=', $team_id)->get();
         return view('assessment.create')->with(compact('user','team','goals','slos'));

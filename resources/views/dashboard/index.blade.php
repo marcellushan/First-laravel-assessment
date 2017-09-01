@@ -8,6 +8,6 @@
     <p>No Assessments</p>
 @endforelse
 </h3>
-    <a href="{{URL::to('/')}}/assessment/team/{{$user->id}}/{{$team->id}}">Create New Assessment</a>
+    <a href="{{URL::to('/')}}/assessment/create/{{$user->id}}/{{$team->id}}">Create New Assessment</a>
 
 @endsection
