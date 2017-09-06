@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
-        <div class="title_header">Unit Leader: {{$record->period}}</div>
+        <div class="title_header">Unit Leader: {{$user->name}}</div>
     </div>
     <div class="well">
         @include('partials.text', ['label' => 'College Goal','name' => 'goal','field' => 'name'])

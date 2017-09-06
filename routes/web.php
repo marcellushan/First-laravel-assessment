@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 //Route::resource('assessment', 'AssessmentController');
 Route::get('/assessment/create/{user_id}/{team_id}', 'AssessmentController@create');
+Route::post('/assessment', 'AssessmentController@store');
 Route::resource('team', 'TeamController');
 Route::resource('slo', 'SloController');
 
