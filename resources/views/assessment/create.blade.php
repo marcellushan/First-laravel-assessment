@@ -5,6 +5,15 @@
     </div>
     <div class="well">
     {{--@include('partials.form_open', ['name' => 'assessment'])--}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     {{Form::open(['url' => 'assessment'])}}
     {{Form::hidden('user_id', $user->id)}}
     {{Form::hidden('period', '2017')}}
@@ -16,6 +25,7 @@
     @include('partials.radio_button', ['label' => 'Student Learning Outcome','name' => 'slos', 'id' => 'slo_id'])
     @include('partials.textbox', ['label' => 'Method of Outcome Assessment','name' => 'method'])
     @include('partials.textbox', ['label' => 'Performance Measure','name' => 'measure'])
+
     {{Form::submit('Submit')}}
 
 @endsection

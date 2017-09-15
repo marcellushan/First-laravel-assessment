@@ -14,5 +14,5 @@
 
 <div class="ui-widget">
 
-    <input name = "course" id="skills" placeholder="required" required>
+    <input name = "course" id="skills" placeholder="required">
 </div>

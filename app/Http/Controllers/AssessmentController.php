@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAssessment;
 use Illuminate\Http\Request;
 use App\User;
 use App\Assessment;
@@ -44,6 +45,14 @@ class AssessmentController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'goal_id' => 'required',
+            'slo_id' => 'required'
+//            'course' => 'required',
+//            'method ' => 'required'
+
+            ]);
         $data = $request->all();
 //        dd($data);
         $team = Team::find($request->team_id);
