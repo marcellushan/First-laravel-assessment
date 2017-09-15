@@ -19,7 +19,10 @@ Route::get('/', function () {
 
 //Route::resource('assessment', 'AssessmentController');
 Route::get('/assessment/create/{user_id}/{team_id}', 'AssessmentController@create');
+Route::get('/assessment/{assessment_id}/edit', 'AssessmentController@edit');
+Route::put('/assessment/{assessment_id}', 'AssessmentController@update');
 Route::post('/assessment', 'AssessmentController@store');
+Route::resource('user', 'UserController');
 Route::resource('team', 'TeamController');
 Route::resource('slo', 'SloController');
 

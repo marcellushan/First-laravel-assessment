@@ -10,7 +10,9 @@
     {{Form::hidden('period', '2017')}}
     {{Form::hidden('team_id', $team->id)}}
     @include('partials.radio_button', ['label' => 'College Goal','name' => 'goals', 'id' => 'goal_id'])
-    @include('partials.textfield', ['label' => 'course','name' => 'course'])
+    {{--@include('partials.textfield', ['label' => 'course','name' => 'course'])--}}
+    <h2>Course</h2>
+    @include('partials.ajax')
     @include('partials.radio_button', ['label' => 'Student Learning Outcome','name' => 'slos', 'id' => 'slo_id'])
     @include('partials.textbox', ['label' => 'Method of Outcome Assessment','name' => 'method'])
     @include('partials.textbox', ['label' => 'Performance Measure','name' => 'measure'])

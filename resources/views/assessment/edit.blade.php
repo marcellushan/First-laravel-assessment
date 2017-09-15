@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
         <div class="title_header"> Assessment</div>
-        <div class="title_header"> Unit: {{$team->name}}</div>
-        <div class="title_header">Unit Leader: {{$record->period}}</div>
+        <div class="title_header"> Unit: {{$record->team->name}}</div>
+        <div class="title_header">Unit Leader: {{$record->user->name}}</div>
     </div>
     <div class="well">
         {{Form::open(['url' => 'assessment/' . $record->id,'method' => 'PUT'])}}

@@ -57,4 +57,28 @@ class AssessmentController extends Controller
 
     }
 
+    public function edit($id)
+    {
+        $record = Assessment::find($id);
+        $goals = \App\Goal::where('inactive')->get();
+        $slos = \App\Slo::where('team_id', '=', $record->team_id)->get();
+
+        return view('assessment.edit')->with(compact('record','team','goals','slos'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $model = Assessment::find($id);
+        $model->fill($data);
+        $model->save();
+    }
+
 }
