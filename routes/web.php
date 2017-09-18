@@ -20,6 +20,7 @@ Route::get('/', function () {
 //Route::resource('assessment', 'AssessmentController');
 Route::get('/assessment/create/{user_id}/{team_id}', 'AssessmentController@create');
 Route::get('/assessment/{assessment_id}/edit', 'AssessmentController@edit');
+Route::get('/assessment/{assessment_id}', 'AssessmentController@show');
 Route::put('/assessment/{assessment_id}', 'AssessmentController@update');
 Route::post('/assessment', 'AssessmentController@store');
 Route::resource('user', 'UserController');
@@ -31,3 +32,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard/{id}', 'DashboardController@index');
 Route::get('/dashboard/team/{user_id}/{team_id}', 'DashboardController@team');
+
+Route::get('/admin', 'AdminController@index');

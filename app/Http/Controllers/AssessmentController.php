@@ -62,9 +62,29 @@ class AssessmentController extends Controller
         $model = new Assessment($data);
         $model->save();
         $record = $model;
-        return view($this->category . '.show')->with(compact('record','team','user','goal','slo'));
+        $submit_button = true;
+        return view($this->category . '.show')->with(compact('record','team','user','goal','slo','submit_button'));
 
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\FinalAssessment  $finalAssessment
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $record = Assessment::find($id);
+        $team = Team::find($record->team_id);
+        $user = User::find($record->user_id);
+        $goal = Goal::find($record->goal_id);
+        $slo = Slo::find($record->slo_id);
+        $submit_button = false;
+        return view($this->category . '.show')->with(compact('record','team','user','goal','slo','submit_button'));
+    }
+
+
 
     public function edit($id)
     {
@@ -85,9 +105,11 @@ class AssessmentController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+//        dd($data);
         $model = Assessment::find($id);
         $model->fill($data);
         $model->save();
+        return redirect('dashboard/' . $model->user_id);
     }
 
 }

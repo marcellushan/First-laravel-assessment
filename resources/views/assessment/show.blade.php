@@ -9,11 +9,12 @@
         @include('partials.text', ['label' => 'Student Learning Outcome','name' => 'slo','field' => 'name'])
         @include('partials.text', ['label' => 'Method of Outcome Assessment','name' => 'record','field' => 'method'])
         @include('partials.text', ['label' => 'Performance Measure','name' => 'record','field' => 'measure'])
+        @if($submit_button)
+            <a href="{{URL::to('/')}}/assessment/{{$record->id}}/edit">edit</a>
 
-        <a href="{{URL::to('/')}}/assessment/{{$record->id}}/edit">edit</a>
-
-        {{Form::open(['url' => 'assessment/' . $record->id ,'method' => 'PUT'])}}
-        {{Form::hidden('submit_date', date("Y-m-d")) }}
-        {{Form::submit('Submit Assessment')}}
-        {{Form::close()}}
+            {{Form::open(['url' => 'assessment/' . $record->id ,'method' => 'PUT'])}}
+            {{Form::hidden('submit_date', date("Y-m-d")) }}
+            {{Form::submit('Submit Assessment')}}
+            {{Form::close()}}
+        @endif
 @endsection
