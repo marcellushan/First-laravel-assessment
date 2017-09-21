@@ -15,22 +15,29 @@ Route::get('/', function () {
     return view('welcome', ['goal' => 'bunch of crap', 'label' => 'College Goals']);
 });
 
-//Route::get('/assessment', 'AssessmentController@index');
+// Assessment Routes
+Route::prefix('assessment')->group(function () {
+    Route::get('create/{user_id}/{team_id}', 'AssessmentController@create');
+    Route::get('{assessment_id}/edit', 'AssessmentController@edit');
+    Route::get('{assessment_id}', 'AssessmentController@show');
+    Route::put('{assessment_id}', 'AssessmentController@update');
+    Route::post('/', 'AssessmentController@store');
+});
 
-//Route::resource('assessment', 'AssessmentController');
-Route::get('/assessment/create/{user_id}/{team_id}', 'AssessmentController@create');
-Route::get('/assessment/{assessment_id}/edit', 'AssessmentController@edit');
-Route::get('/assessment/{assessment_id}', 'AssessmentController@show');
-Route::put('/assessment/{assessment_id}', 'AssessmentController@update');
-Route::post('/assessment', 'AssessmentController@store');
 Route::resource('user', 'UserController');
+
 Route::resource('team', 'TeamController');
+
 Route::resource('slo', 'SloController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard/{id}', 'DashboardController@index');
+
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/{id}', 'DashboardController@show');
 Route::get('/dashboard/team/{user_id}/{team_id}', 'DashboardController@team');
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/select_team', 'AdminController@selectTeam');
+Route::get('/admin/select_user/{id}', 'AdminController@selectUser');

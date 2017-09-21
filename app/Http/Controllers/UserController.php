@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       $users = User::get();
+       $users = User::orderBy('username')->get();
         return view('user.index')->with(compact('users'));
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -36,7 +36,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $user = new User($data);
+        $user->save();
+        dd($request);
     }
 
     /**

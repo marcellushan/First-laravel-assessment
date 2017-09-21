@@ -10,7 +10,13 @@ use App\User;
 
 class DashboardController extends Controller
 {
-   public function index($id)
+    public function index()
+    {
+        $users = User::orderBy('username')->get();
+//        dd($users);
+        return view('dashboard.index')->with(compact('users'));
+    }
+   public function show($id)
    {
 
        $user = User::find($id);
@@ -27,7 +33,7 @@ class DashboardController extends Controller
        $team = Team::find($team_id);
        $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
        $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
-       return view('dashboard.index', compact('user','team','saveds','submitteds'));
+       return view('dashboard.user', compact('user','team','saveds','submitteds'));
 
    }
 
